@@ -239,3 +239,5 @@ Issues and pull requests are welcome. Keep the skill lightweight: Markdown first
 ## 14. License
 
 MIT © 2026 Morteza Pourmirzai — see [LICENSE](LICENSE).
+
+Version **0.1.0** · Changelog: [CHANGELOG.md](CHANGELOG.md) · Releases: [GitHub Releases](https://github.com/pourmirzai/Dont-Be-Dumb/releases)
