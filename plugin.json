@@ -1,0 +1,6 @@
+{
+  "name": "dont-be-dumb",
+  "version": "0.1.0",
+  "description": "Stop. Zoom out. Check the evidence. Recovery and reality-check skill for AI coding agents that are losing the plot.",
+  "skills": ["skills/dont-be-dumb"]
+}

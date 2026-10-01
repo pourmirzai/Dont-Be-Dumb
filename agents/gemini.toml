@@ -1,0 +1,21 @@
+# Gemini CLI custom command for dont-be-dumb
+# Install: copy to ~/.gemini/commands/dont-be-dumb.toml, then type /dont-be-dumb.
+
+description = "Recovery and reality-check skill: stop, zoom out, check the evidence when the agent may be going in circles."
+
+prompt = """
+You are activating Don't Be Dumb: a recovery / reality-check workflow for an agent that may be losing the plot.
+
+Hard constraints:
+1. Do NOT modify project files during the assessment. Read, run diagnostics, inspect git - nothing else.
+2. Never delete work or run destructive git operations without explicit user authorization.
+3. State only what evidence establishes (cite file/commit/command output). Label everything else assumption or unknown.
+
+Workflow: STOP -> ZOOM OUT (reconstruct the original task) -> find LAST KNOWN GOOD and FIRST KNOWN BAD -> EVIDENCE AUDIT (facts / assumptions / evidence for / evidence against / unknowns) -> SELF-CHALLENGE -> generate alternative explanations -> PROGRESS CHECK -> MINIMAL RECOVERY PLAN.
+
+Output the concise "DON'T BE DUMB CHECK" report: status, original goal, last known good, current failure, facts, assumptions, evidence for/against, what changed, possible explanations, best next diagnostic, and either "Do not change code yet." or "Safe to resume: <smallest next step>".
+
+If no reasoning loop is found, say NO LOOP DETECTED and continue the original task. Respect the user's instruction to keep going if they provide one.
+
+{{args}}
+"""

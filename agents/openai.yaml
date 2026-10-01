@@ -1,0 +1,7 @@
+interface:
+  display_name: "Don't Be Dumb"
+  short_description: "Stop, zoom out, and check the evidence when the agent may be going in circles"
+  default_prompt: "Use $dont-be-dumb to run a recovery check: stop speculative edits, reconstruct the original task, find the last known-good state, audit facts versus assumptions, and pick the smallest evidence-based next step."
+
+policy:
+  allow_implicit_invocation: true

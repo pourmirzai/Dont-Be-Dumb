@@ -1,0 +1,48 @@
+{
+  "name": "dont-be-dumb-skill",
+  "version": "0.1.0",
+  "description": "Stop. Zoom out. Check the evidence. A recovery and reality-check skill for AI coding agents that are losing the plot.",
+  "main": "bin/cli.js",
+  "bin": {
+    "dont-be-dumb-skill": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "skills",
+    "SKILL.md",
+    "examples",
+    "README.md",
+    "INSTALL.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "plugin.json",
+    "opencode.json",
+    "kimi.plugin.json",
+    "qwen-extension.json",
+    "agents"
+  ],
+  "pi": {
+    "skills": ["./skills"]
+  },
+  "scripts": {
+    "test": "node scripts/validate.js"
+  },
+  "keywords": [
+    "agent-skills",
+    "ai-agent",
+    "coding-agent",
+    "claude-code",
+    "codex",
+    "gemini-cli",
+    "opencode",
+    "recovery",
+    "debugging",
+    "skills"
+  ],
+  "author": "Morteza Pourmirzai",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pourmirzai/Dont-Be-Dumb.git"
+  }
+}

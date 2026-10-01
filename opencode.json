@@ -1,0 +1,5 @@
+{
+  "$schema": "https://opencode.ai/schema.json",
+  "name": "dont-be-dumb",
+  "skills": ["skills/dont-be-dumb"]
+}
