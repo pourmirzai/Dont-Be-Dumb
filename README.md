@@ -127,7 +127,32 @@ npx skills add pourmirzai/Dont-Be-Dumb --list
 
 ## 8. Supported / verified clients
 
-See the verification table in [INSTALL.md](INSTALL.md) for the commands actually executed and their results. Installation into `.claude/`, `.agents/`, `.codex/`, `.gemini/`, `.cursor/`, and `.opencode/` directories has been exercised where noted; runtime behavior in each agent product is not automatically tested. Clients listed only as "claimed" by a manifest in this repository were not independently tested.
+**Tested** (2026-10-01, Node v24.21.0, [`skills`](https://github.com/vercel-labs/skills) CLI v1.7.0), against the published repository:
+
+| Command | Result |
+|---|---|
+| `npx skills add pourmirzai/Dont-Be-Dumb --list` | Resolves the repository, reports one skill: `dont-be-dumb` |
+| `npx skills add pourmirzai/Dont-Be-Dumb -y` | Installs to `.agents/skills/dont-be-dumb` and links it into `.claude/skills/`; installer auto-detected Antigravity, Antigravity CLI, Claude Code, Cline, Codex, Gemini CLI, GitHub Copilot, OpenCode, ZCode (ZCode skipped: no project dir) |
+| `npx skills list` | Shows `dont-be-dumb` as a project skill |
+| `npx github:pourmirzai/Dont-Be-Dumb --help` / `--claude --local` | Interactive installer fetches the published package, prints help, installs `SKILL.md` |
+| `curl` of `raw.githubusercontent.com/.../skills/dont-be-dumb/SKILL.md` | HTTP 200, correct content (manual single-file installs) |
+| `skills-ref validate ./skills/dont-be-dumb` | `Valid skill` (official Agent Skills validator) |
+| `npm test` / `node scripts/run-evals.js` | Validation PASSED · 10/10 scenario evaluations |
+
+These checks prove the skill **installs and validates**. They do not prove that every agent behaves identically once the skill is loaded — no per-agent automated runtime suite exists for this repository.
+
+**Claimed** (declared by a manifest in this repository, not independently tested):
+
+| File | Declared target |
+|---|---|
+| `plugin.json` | Claude Code / OpenCode plugin manifest |
+| `opencode.json` | OpenCode configuration |
+| `kimi.plugin.json` | Kimi plugin |
+| `qwen-extension.json` | Qwen Code extension |
+| `agents/gemini.toml` | Gemini CLI / Google Antigravity slash command |
+| `agents/openai.yaml` | OpenAI Codex |
+
+**Not executed:** global `-g` installs, targeted `-a <agent>` installs, and the manual per-client paths in [INSTALL.md](INSTALL.md) (they write to home directories or need tools not present in this environment). They follow each tool's documented interface — review before use. Because this repository ships no `.claude-plugin/marketplace.json`, `claude plugin marketplace add` is not available.
 
 ## 9. Example: an agent digging itself deeper
 
