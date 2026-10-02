@@ -153,8 +153,8 @@ codex plugin add dont-be-dumb@dont-be-dumb
 | `skills-ref validate ./skills/dont-be-dumb` | `Valid skill` (official Agent Skills validator) |
 | `npm test` / `node scripts/run-evals.js` | Validation PASSED · 10/10 scenario evaluations |
 | `claude plugin validate .` / `claude plugin validate ./plugins/dont-be-dumb` | Marketplace manifest and plugin package both pass |
-| `claude plugin marketplace add <local path>` → `install dont-be-dumb@dont-be-dumb` → `details dont-be-dumb` | Installed at 0.1.1; inventory reports skill `dont-be-dumb` |
-| `codex plugin marketplace add <local path>` → `add dont-be-dumb@dont-be-dumb` | Installed at 0.1.1; cache contains `plugin.json` + `skills/dont-be-dumb/SKILL.md` |
+| `claude plugin marketplace add pourmirzai/Dont-Be-Dumb` → `claude plugin install dont-be-dumb@dont-be-dumb` → `claude plugin details dont-be-dumb` | Clones from GitHub, installs at 0.1.1; inventory reports skill `dont-be-dumb` |
+| `codex plugin marketplace add pourmirzai/Dont-Be-Dumb` → `codex plugin add dont-be-dumb@dont-be-dumb` | Clones from GitHub, installs at 0.1.1; cache contains `plugin.json` + `skills/dont-be-dumb/SKILL.md` |
 
 These checks prove the skill **installs and validates**. They do not prove that every agent behaves identically once the skill is loaded — no per-agent automated runtime suite exists for this repository.
 

@@ -4,9 +4,9 @@ Choose your coding assistant or agent harness below.
 
 > **Verification status** (2026-10-01, Node v24.21.0, `skills` CLI v1.7.0), against the published repository:
 >
-> ✅ Executed and confirmed working: `npx skills add pourmirzai/Dont-Be-Dumb --list`, `npx skills add pourmirzai/Dont-Be-Dumb -y`, `npx skills list`, `npx github:pourmirzai/Dont-Be-Dumb --help`, `npx github:pourmirzai/Dont-Be-Dumb --claude --local`, the raw `curl` URL used by the single-file installs, `skills-ref validate ./skills/dont-be-dumb`, `npm test`, `node scripts/run-evals.js` (10/10).
+> ✅ Executed and confirmed working: `npx skills add pourmirzai/Dont-Be-Dumb --list`, `npx skills add pourmirzai/Dont-Be-Dumb -y`, `npx skills list`, `npx github:pourmirzai/Dont-Be-Dumb --help`, `npx github:pourmirzai/Dont-Be-Dumb --claude --local`, the raw `curl` URL used by the single-file installs, `claude plugin marketplace add pourmirzai/Dont-Be-Dumb` + `claude plugin install dont-be-dumb@dont-be-dumb` + `claude plugin details dont-be-dumb`, `codex plugin marketplace add pourmirzai/Dont-Be-Dumb` + `codex plugin add dont-be-dumb@dont-be-dumb`, `skills-ref validate ./skills/dont-be-dumb`, `npm test`, `node scripts/run-evals.js` (10/10).
 >
-> ⬜ Not executed: global `-g` installs, targeted `-a <agent>` installs, and the Gemini CLI/Antigravity, Windsurf, Zed, Cursor, and Codex manual sections below (they write to home directories or need tools not present here). Each follows that tool's documented interface — review before use.
+> ⬜ Not executed: global `-g` installs, targeted `-a <agent>` installs, and the manual single-file (curl) Gemini CLI/Antigravity, Windsurf, Zed, Cursor, and Codex sections below (they write to home directories or need tools not present here). Each follows that tool's documented interface — review before use.
 >
 > ⚠️ Skills run with full agent permissions: review any skill before installing.
 
