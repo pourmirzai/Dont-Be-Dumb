@@ -3,6 +3,18 @@
 All notable changes to this project are documented in this file.
 Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning: [Semantic Versioning](https://semver.org/).
 
+## [0.1.1] - 2026-10-01
+
+### Added
+
+- **Claude Code marketplace support** — `.claude-plugin/marketplace.json`; install with `claude plugin marketplace add pourmirzai/Dont-Be-Dumb` then `claude plugin install dont-be-dumb@dont-be-dumb`.
+- **Codex / ChatGPT plugin marketplace support** — `.agents/plugins/marketplace.json` plus a portable plugin package at `plugins/dont-be-dumb/` (Agent Plugins `plugin.json` + bundled `skills/`), install with `codex plugin marketplace add pourmirzai/Dont-Be-Dumb` then `codex plugin add dont-be-dumb@dont-be-dumb`.
+- Validation coverage for both marketplace manifests and the bundled plugin package.
+
+### Changed
+
+- Version metadata bumped across all manifests; skill workflow content unchanged.
+
 ## [0.1.0] - 2026-10-01
 
 ### Added

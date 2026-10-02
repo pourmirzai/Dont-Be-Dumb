@@ -5,7 +5,7 @@
 A recovery / reality-check skill for AI coding agents that are losing the plot.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)
 
 ---
 
@@ -119,6 +119,20 @@ npx skills add pourmirzai/Dont-Be-Dumb --list
 
 > ⚠️ Review any skill before installing it — skills run with full agent permissions.
 
+### Claude Code marketplace
+
+```bash
+claude plugin marketplace add pourmirzai/Dont-Be-Dumb
+claude plugin install dont-be-dumb@dont-be-dumb
+```
+
+### Codex / ChatGPT plugin marketplace
+
+```bash
+codex plugin marketplace add pourmirzai/Dont-Be-Dumb
+codex plugin add dont-be-dumb@dont-be-dumb
+```
+
 ### Alternatives
 
 - **Tell your agent:** paste `Install the dont-be-dumb skill from https://github.com/pourmirzai/Dont-Be-Dumb, see the repo's INSTALL.md.` into chat.
@@ -138,6 +152,9 @@ npx skills add pourmirzai/Dont-Be-Dumb --list
 | `curl` of `raw.githubusercontent.com/.../skills/dont-be-dumb/SKILL.md` | HTTP 200, correct content (manual single-file installs) |
 | `skills-ref validate ./skills/dont-be-dumb` | `Valid skill` (official Agent Skills validator) |
 | `npm test` / `node scripts/run-evals.js` | Validation PASSED · 10/10 scenario evaluations |
+| `claude plugin validate .` / `claude plugin validate ./plugins/dont-be-dumb` | Marketplace manifest and plugin package both pass |
+| `claude plugin marketplace add <local path>` → `install dont-be-dumb@dont-be-dumb` → `details dont-be-dumb` | Installed at 0.1.1; inventory reports skill `dont-be-dumb` |
+| `codex plugin marketplace add <local path>` → `add dont-be-dumb@dont-be-dumb` | Installed at 0.1.1; cache contains `plugin.json` + `skills/dont-be-dumb/SKILL.md` |
 
 These checks prove the skill **installs and validates**. They do not prove that every agent behaves identically once the skill is loaded — no per-agent automated runtime suite exists for this repository.
 
@@ -146,13 +163,14 @@ These checks prove the skill **installs and validates**. They do not prove that 
 | File | Declared target |
 |---|---|
 | `plugin.json` | Claude Code / OpenCode plugin manifest |
+| `plugins/dont-be-dumb/plugin.json` | Portable Agent Plugins manifest (Codex / ChatGPT) |
 | `opencode.json` | OpenCode configuration |
 | `kimi.plugin.json` | Kimi plugin |
 | `qwen-extension.json` | Qwen Code extension |
 | `agents/gemini.toml` | Gemini CLI / Google Antigravity slash command |
 | `agents/openai.yaml` | OpenAI Codex |
 
-**Not executed:** global `-g` installs, targeted `-a <agent>` installs, and the manual per-client paths in [INSTALL.md](INSTALL.md) (they write to home directories or need tools not present in this environment). They follow each tool's documented interface — review before use. Because this repository ships no `.claude-plugin/marketplace.json`, `claude plugin marketplace add` is not available.
+**Not executed:** global `-g` installs, targeted `-a <agent>` installs, and the manual per-client paths in [INSTALL.md](INSTALL.md) (they write to home directories or need tools not present in this environment). They follow each tool's documented interface — review before use.
 
 ## 9. Example: an agent digging itself deeper
 
@@ -240,4 +258,4 @@ Issues and pull requests are welcome. Keep the skill lightweight: Markdown first
 
 MIT © 2026 Morteza Pourmirzai — see [LICENSE](LICENSE).
 
-Version **0.1.0** · Changelog: [CHANGELOG.md](CHANGELOG.md) · Releases: [GitHub Releases](https://github.com/pourmirzai/Dont-Be-Dumb/releases)
+Version **0.1.1** · Changelog: [CHANGELOG.md](CHANGELOG.md) · Releases: [GitHub Releases](https://github.com/pourmirzai/Dont-Be-Dumb/releases)

@@ -58,7 +58,13 @@ for (const [label, content] of [['SKILL.md (root)', rootSkill], [SKILL_PATH, dir
 
 // --- 2. Root/skills sync --------------------------------------------------
 
+const bundledSkillPath = 'plugins/dont-be-dumb/skills/dont-be-dumb/SKILL.md';
 if (rootSkill !== dirSkill) fail('root SKILL.md and skills/dont-be-dumb/SKILL.md are not identical');
+if (!fs.existsSync(path.join(ROOT, bundledSkillPath))) {
+  fail(`${bundledSkillPath} missing (bundled plugin package)`);
+} else if (read(bundledSkillPath) !== rootSkill) {
+  fail(`${bundledSkillPath} is not identical to root SKILL.md`);
+}
 
 // --- 3. Workflow coverage -------------------------------------------------
 
@@ -142,6 +148,61 @@ for (const mf of ['plugin.json', 'kimi.plugin.json', 'qwen-extension.json']) {
 }
 JSON.parse(read('opencode.json'));
 JSON.parse(read('qwen-extension.json'));
+
+// --- 6b. Marketplace manifests & bundled plugin package -------------------
+
+const PLUGIN_DIR = 'plugins/dont-be-dumb';
+
+let claudeMarket;
+try {
+  claudeMarket = JSON.parse(read('.claude-plugin/marketplace.json'));
+} catch (e) {
+  fail(`.claude-plugin/marketplace.json is not valid JSON: ${e.message}`);
+}
+if (claudeMarket) {
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(claudeMarket.name || '')) fail('Claude marketplace: invalid "name"');
+  if (!claudeMarket.owner || !claudeMarket.owner.name) fail('Claude marketplace: owner.name is required');
+  if (claudeMarket.version !== pkg.version) fail(`Claude marketplace version ${claudeMarket.version} != ${pkg.version}`);
+  const entry = (claudeMarket.plugins || []).find((p) => p.name === 'dont-be-dumb');
+  if (!entry) fail('Claude marketplace: missing plugin entry "dont-be-dumb"');
+  if (entry) {
+    if (entry.source !== `./${PLUGIN_DIR}`) fail(`Claude marketplace: source must be "./${PLUGIN_DIR}"`);
+    if (entry.version !== pkg.version) fail(`Claude marketplace plugin entry version ${entry.version} != ${pkg.version}`);
+  }
+}
+
+let codexMarket;
+try {
+  codexMarket = JSON.parse(read('.agents/plugins/marketplace.json'));
+} catch (e) {
+  fail(`.agents/plugins/marketplace.json is not valid JSON: ${e.message}`);
+}
+if (codexMarket) {
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(codexMarket.name || '')) fail('Codex marketplace: invalid "name"');
+  const entry = (codexMarket.plugins || []).find((p) => p.name === 'dont-be-dumb');
+  if (!entry) fail('Codex marketplace: missing plugin entry "dont-be-dumb"');
+  if (entry) {
+    if (!entry.source || entry.source.source !== 'local' || entry.source.path !== `./${PLUGIN_DIR}`) {
+      fail(`Codex marketplace: source must be {source:"local", path:"./${PLUGIN_DIR}"}`);
+    }
+    if (!entry.policy || entry.policy.installation !== 'AVAILABLE') fail('Codex marketplace: policy.installation must be "AVAILABLE"');
+  }
+}
+
+let portableManifest;
+try {
+  portableManifest = JSON.parse(read(`${PLUGIN_DIR}/plugin.json`));
+} catch (e) {
+  fail(`${PLUGIN_DIR}/plugin.json is not valid JSON: ${e.message}`);
+}
+if (portableManifest) {
+  if (portableManifest.name !== 'dont-be-dumb') fail(`${PLUGIN_DIR}/plugin.json: name must be "dont-be-dumb"`);
+  if (portableManifest.version !== pkg.version) fail(`${PLUGIN_DIR}/plugin.json version ${portableManifest.version} != ${pkg.version}`);
+  if (!portableManifest.description) fail(`${PLUGIN_DIR}/plugin.json: description required`);
+}
+if (!fs.existsSync(path.join(ROOT, PLUGIN_DIR, 'skills', 'dont-be-dumb', 'SKILL.md'))) {
+  fail(`${PLUGIN_DIR}/skills/dont-be-dumb/SKILL.md missing (Codex/Claude discover skills from plugin-root skills/)`);
+}
 
 // --- 7. Eval suite sanity -------------------------------------------------
 

@@ -4,7 +4,7 @@ description: Recovery and reality-check skill for AI coding agents that may be l
 license: MIT
 metadata:
   author: pourmirzai
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Don't Be Dumb

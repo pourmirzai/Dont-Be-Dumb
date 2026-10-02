@@ -1,6 +1,6 @@
 {
   "name": "dont-be-dumb-skill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Stop. Zoom out. Check the evidence. A recovery and reality-check skill for AI coding agents that are losing the plot.",
   "main": "bin/cli.js",
   "bin": {

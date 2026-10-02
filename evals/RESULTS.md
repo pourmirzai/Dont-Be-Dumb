@@ -1,6 +1,6 @@
 # Evaluation results
 
-Latest run: **2026-10-01** · Node v24 · skill v0.1.0
+Latest run: **2026-10-01** · Node v24 · skill v0.1.1
 
 ## Method
 

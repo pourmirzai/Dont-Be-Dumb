@@ -1,0 +1,14 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "dont-be-dumb",
+  "version": "0.1.1",
+  "description": "Stop. Zoom out. Check the evidence. A recovery / reality-check skill for AI coding agents that are losing the plot.",
+  "author": {
+    "name": "Morteza Pourmirzai",
+    "url": "https://github.com/pourmirzai"
+  },
+  "homepage": "https://github.com/pourmirzai/Dont-Be-Dumb",
+  "repository": "https://github.com/pourmirzai/Dont-Be-Dumb",
+  "license": "MIT",
+  "keywords": ["agent-skills", "recovery", "debugging", "reasoning", "skills"]
+}

@@ -81,7 +81,11 @@ Delete the `SKILL.md` path the installer reported, e.g. `rm -rf ~/.claude/skills
 <summary><strong>Claude Code</strong></summary>
 
 ```bash
-# Via the universal installer:
+# Recommended (plugin marketplace):
+claude plugin marketplace add pourmirzai/Dont-Be-Dumb
+claude plugin install dont-be-dumb@dont-be-dumb
+
+# Or via the universal installer:
 npx skills add pourmirzai/Dont-Be-Dumb -a claude-code -y
 
 # Or copy the single file directly:
@@ -89,11 +93,9 @@ mkdir -p ~/.claude/skills/dont-be-dumb
 curl -sL https://raw.githubusercontent.com/pourmirzai/Dont-Be-Dumb/main/skills/dont-be-dumb/SKILL.md -o ~/.claude/skills/dont-be-dumb/SKILL.md
 ```
 
-> ⚠️ `claude plugin marketplace add pourmirzai/Dont-Be-Dumb` is **not** available — this repository has no `.claude-plugin/marketplace.json`. Use one of the two methods above.
+**Verify:** `claude plugin details dont-be-dumb` should list skill `dont-be-dumb`; or start a new session and type `/dont-be-dumb` or `Don't Be Dumb`.
 
-**Verify:** start a new session and type `/dont-be-dumb` or `Don't Be Dumb`.
-
-**Uninstall:** `npx skills remove dont-be-dumb`, or `rm -rf ~/.claude/skills/dont-be-dumb`.
+**Uninstall:** `claude plugin uninstall dont-be-dumb`, optionally `claude plugin marketplace remove dont-be-dumb`, or `npx skills remove dont-be-dumb` / `rm -rf ~/.claude/skills/dont-be-dumb`.
 
 </details>
 
@@ -128,11 +130,18 @@ curl -sL https://raw.githubusercontent.com/pourmirzai/Dont-Be-Dumb/main/skills/d
 <summary><strong>OpenAI Codex / AGENTS.md</strong></summary>
 
 ```bash
+# Recommended (plugin marketplace):
+codex plugin marketplace add pourmirzai/Dont-Be-Dumb
+codex plugin add dont-be-dumb@dont-be-dumb
+
+# Or copy the skill file into the project:
 mkdir -p .agents/skills/dont-be-dumb
 curl -sL https://raw.githubusercontent.com/pourmirzai/Dont-Be-Dumb/main/skills/dont-be-dumb/SKILL.md -o .agents/skills/dont-be-dumb/SKILL.md
 ```
 
-**Verify:** trigger with `$dont-be-dumb` or `Don't Be Dumb` in Codex chat.
+**Verify:** trigger with `$dont-be-dumb` or `Don't Be Dumb` in Codex chat; or `codex plugin list --json` shows `dont-be-dumb@dont-be-dumb`.
+
+**Uninstall:** `codex plugin remove dont-be-dumb`, optionally `codex plugin marketplace remove dont-be-dumb`.
 
 </details>
 
